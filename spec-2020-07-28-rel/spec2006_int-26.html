@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SPECINT2006: PGO xhost/native -Ofast - ICC vs GCC</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header>
+  <h1>SPEC CPU result comparison</h1>
+  <span id="subtitle">28nd July 2020</span>
+
+</header>
+<main>
+  <h1>SPECINT2006: PGO xhost/native -Ofast - ICC vs GCC</h1>
+  <p class="cmptext">-Ofast -xHost -prof-use vs -Ofast -mtune,march=native -fprofile-use  </p">
+  <div>
+  <h2>Intel Cascade Lake Xeon</h2>
+  <h3>Run-times</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">ICC</th>
+      <th class="relperhdr">GCC</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="400.perlbench.html?c=10000010000&m=0100&l=01&t=010001">400.perlbench</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 32.55%,rgba(48,186,120, 0.3) 32.55%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">90.45%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="401.bzip2.html?c=10000010000&m=0100&l=01&t=010001">401.bzip2</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.61%,rgba(48,186,120, 0.3) 37.61%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.22%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="403.gcc.html?c=10000010000&m=0100&l=01&t=010001">403.gcc</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.74%,rgba(48,186,120, 0.3) 37.74%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.30%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="429.mcf.html?c=10000010000&m=0100&l=01&t=010001">429.mcf</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 40.42%,rgba(48,186,120, 0.3) 40.42%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">94.76%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="445.gobmk.html?c=10000010000&m=0100&l=01&t=010001">445.gobmk</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.68%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="456.hmmer.html?c=10000010000&m=0100&l=01&t=010001">456.hmmer</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 79.25%,rgba(255,255,255,0) 79.25%,rgba(255,255,255,0) 100%);">116.00%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="458.sjeng.html?c=10000010000&m=0100&l=01&t=010001">458.sjeng</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 66.20%,rgba(255,255,255,0) 66.20%,rgba(255,255,255,0) 100%);">108.86%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="462.libquantum.html?c=10000010000&m=0100&l=01&t=010001">462.libquantum</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42.89%,rgba(48,186,120, 0.3) 42.89%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.11%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="464.h264ref.html?c=10000010000&m=0100&l=01&t=010001">464.h264ref</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 44.44%,rgba(48,186,120, 0.3) 44.44%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.96%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="471.omnetpp.html?c=10000010000&m=0100&l=01&t=010001">471.omnetpp</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.29%,rgba(48,186,120, 0.3) 37.29%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.05%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="473.astar.html?c=10000010000&m=0100&l=01&t=010001">473.astar</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 64.12%,rgba(255,255,255,0) 64.12%,rgba(255,255,255,0) 100%);">107.72%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="483.xalancbmk.html?c=10000010000&m=0100&l=01&t=010001">483.xalancbmk</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 100.00%,rgba(255,255,255,0) 100.00%,rgba(255,255,255,0) 100%);">127.35%</td>
+    </tr>
+  </table>
+  </div>
+  <table class="legend">
+    <tr>
+    <td>ICC</td>
+    <td>ICC 19.1 (20191121)</td>
+    </tr>
+    <tr>
+    <td>GCC</td>
+    <td>GCC master commit 6e1e0decc9e from 22nd July 2020, 541.leela_r was benchmarked with this revision patched to fix PR 96382</td>
+    </tr>
+  </table>
+  <span class="legend">  Naturally, the smaller the run-times, the better.  On the other hand, rates and especially their geometric means are better when they are greater.
+  </span>  <div class="aftertable"></div>
+  <h3>Non-debug executable sizes</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">ICC</th>
+      <th class="relperhdr">GCC</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="400.perlbench.html?c=10000010000&m=0100&l=01&t=010001">400.perlbench</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 40.90%,rgba(48,186,120, 0.3) 40.90%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">87.81%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="401.bzip2.html?c=10000010000&m=0100&l=01&t=010001">401.bzip2</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 29.07%,rgba(48,186,120, 0.3) 29.07%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">71.96%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="403.gcc.html?c=10000010000&m=0100&l=01&t=010001">403.gcc</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 55.14%,rgba(255,255,255,0) 55.14%,rgba(255,255,255,0) 100%);">106.89%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="429.mcf.html?c=10000010000&m=0100&l=01&t=010001">429.mcf</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 22.69%,rgba(48,186,120, 0.3) 22.69%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">63.40%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="445.gobmk.html?c=10000010000&m=0100&l=01&t=010001">445.gobmk</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.08%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="456.hmmer.html?c=10000010000&m=0100&l=01&t=010001">456.hmmer</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.57%,rgba(48,186,120, 0.3) 37.57%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">83.35%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="458.sjeng.html?c=10000010000&m=0100&l=01&t=010001">458.sjeng</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.25%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="462.libquantum.html?c=10000010000&m=0100&l=01&t=010001">462.libquantum</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0.00%,rgba(48,186,120, 0.3) 0.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">33.00%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="464.h264ref.html?c=10000010000&m=0100&l=01&t=010001">464.h264ref</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 47.86%,rgba(48,186,120, 0.3) 47.86%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.13%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="471.omnetpp.html?c=10000010000&m=0100&l=01&t=010001">471.omnetpp</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 36.19%,rgba(48,186,120, 0.3) 36.19%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">81.49%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="473.astar.html?c=10000010000&m=0100&l=01&t=010001">473.astar</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 13.34%,rgba(48,186,120, 0.3) 13.34%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">50.87%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="483.xalancbmk.html?c=10000010000&m=0100&l=01&t=010001">483.xalancbmk</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 44.43%,rgba(48,186,120, 0.3) 44.43%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">92.54%</td>
+    </tr>
+  </table>
+  </div>
+  <span class="legend">Smaller binary sizes are always better.</span>
+  <div class="aftertable"></div>
+  </div>
+
+</main>
+
+<footer>
+
+  <p>
+
+    <strong>DISCLAIMER:</strong> All the SPEC results are
+    "non-reportable".  The measurements were taken in order to compare
+    different compilers, not different hardware, please do not attempt
+    to make any comparisons of the different machines used.  Moreover,
+    we have broken various SPEC benchmarking rules, we have even
+    patched some benchmark sources to be able to compile them with
+    <tt>-fstrict-aliasing</tt>, build with <tt>-fno-common</tt>, and
+    so forth.  And the data may be just wrong, the scripts generating
+    all the fancy graphs and tables have been known to contain bugs in
+    the past.  On the other hand, this is the data that we use to
+    evaluate where GCC stands and we believe that overall this
+    comparison of compilers is a useful one.
+
+  </p>
+
+  <div id="last">&nbsp;</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SPEC2017 INTrate: Trunk native -Ofast - standard vs LTO vs LTO+PGO</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header>
+  <h1>SPEC CPU result comparison</h1>
+  <span id="subtitle">28nd July 2020</span>
+
+</header>
+<main>
+  <h1>SPEC2017 INTrate: Trunk native -Ofast - standard vs LTO vs LTO+PGO</h1>
+  <p class="cmptext">-Ofast -march=native -mtune=native  </p">
+  <div>
+  <h2>AMD EPYC 7502P (zen2 based Rome)</h2>
+  <h3>Run-times</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">Normal</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr cmpseparator">LTO+PGO</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr">LTO+PGO</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="500.perlbench_r.html?c=10000000000&m=1011&l=01&t=010000">500.perlbench_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 43.16%,rgba(48,186,120, 0.3) 43.16%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.23%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 13.73%,rgba(48,186,120, 0.3) 13.73%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.32%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 19.73%,rgba(48,186,120, 0.3) 19.73%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">87.75%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="502.gcc_r.html?c=10000000000&m=1011&l=01&t=010000">502.gcc_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42.76%,rgba(48,186,120, 0.3) 42.76%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.07%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 22.85%,rgba(48,186,120, 0.3) 22.85%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.01%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 29.49%,rgba(48,186,120, 0.3) 29.49%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">91.70%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="505.mcf_r.html?c=10000000000&m=1011&l=01&t=010000">505.mcf_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 14.40%,rgba(48,186,120, 0.3) 14.40%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.59%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 23.66%,rgba(48,186,120, 0.3) 23.66%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.34%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 60.81%,rgba(255,255,255,0) 60.81%,rgba(255,255,255,0) 100%);">104.38%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="520.omnetpp_r.html?c=10000000000&m=1011&l=01&t=010000">520.omnetpp_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 43.55%,rgba(48,186,120, 0.3) 43.55%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.39%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 23.27%,rgba(48,186,120, 0.3) 23.27%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.18%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 29.18%,rgba(48,186,120, 0.3) 29.18%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">91.57%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="523.xalancbmk_r.html?c=10000000000&m=1011&l=01&t=010000">523.xalancbmk_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 38.09%,rgba(48,186,120, 0.3) 38.09%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">95.18%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 28.17%,rgba(48,186,120, 0.3) 28.17%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">91.16%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 39.58%,rgba(48,186,120, 0.3) 39.58%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">95.78%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="525.x264_r.html?c=10000000000&m=1011&l=01&t=010000">525.x264_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">98.99%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 41.31%,rgba(48,186,120, 0.3) 41.31%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.48%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 43.73%,rgba(48,186,120, 0.3) 43.73%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.46%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="531.deepsjeng_r.html?c=10000000000&m=1011&l=01&t=010000">531.deepsjeng_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 13.97%,rgba(48,186,120, 0.3) 13.97%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.42%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0.00%,rgba(48,186,120, 0.3) 0.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">79.76%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 33.64%,rgba(48,186,120, 0.3) 33.64%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.38%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="541.leela_r.html?c=10000000000&m=1011&l=01&t=010000">541.leela_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 25.95%,rgba(48,186,120, 0.3) 25.95%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">90.27%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 16.11%,rgba(48,186,120, 0.3) 16.11%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">86.28%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 39.10%,rgba(48,186,120, 0.3) 39.10%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">95.59%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="548.exchange2_r.html?c=10000000000&m=1011&l=01&t=010000">548.exchange2_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">98.66%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 12.35%,rgba(48,186,120, 0.3) 12.35%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">84.76%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 15.18%,rgba(48,186,120, 0.3) 15.18%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.91%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="557.xz_r.html?c=10000000000&m=1011&l=01&t=010000">557.xz_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">98.46%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.30%,rgba(48,186,120, 0.3) 37.30%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">94.86%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 40.97%,rgba(48,186,120, 0.3) 40.97%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.34%</td>
+    </tr>
+  </table>
+  </div>
+  <table class="legend">
+  </table>
+  <span class="legend">  The compiler used was GCC master commit 6e1e0decc9e from 22nd July 2020, 541.leela_r was benchmarked with this revision patched to fix PR 96382.<br>
+  Naturally, the smaller the run-times, the better.  On the other hand, rates and especially their geometric means are better when they are greater.
+  <br>
+  See also continuous gcc options benchmarking at <a href="https://lnt.opensuse.org/db_default/v4/SPEC/spec_report/options">https://lnt.opensuse.org/db_default/v4/SPEC/spec_report/options</a>.
+  </span>  <div class="aftertable"></div>
+  <h3>Non-debug executable sizes</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">Normal</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr cmpseparator">LTO+PGO</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr">LTO+PGO</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="500.perlbench_r.html?c=10000000000&m=1011&l=01&t=010000">500.perlbench_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 59.43%,rgba(255,255,255,0) 59.43%,rgba(255,255,255,0) 100%);">111.33%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 34.63%,rgba(48,186,120, 0.3) 34.63%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">81.55%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 27.72%,rgba(48,186,120, 0.3) 27.72%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">73.25%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="502.gcc_r.html?c=10000000000&m=1011&l=01&t=010000">502.gcc_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 52.00%,rgba(255,255,255,0) 52.00%,rgba(255,255,255,0) 100%);">102.40%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 46.47%,rgba(48,186,120, 0.3) 46.47%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">95.76%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 44.60%,rgba(48,186,120, 0.3) 44.60%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.51%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="505.mcf_r.html?c=10000000000&m=1011&l=01&t=010000">505.mcf_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 31.14%,rgba(48,186,120, 0.3) 31.14%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">77.35%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 16.78%,rgba(48,186,120, 0.3) 16.78%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">60.11%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 31.44%,rgba(48,186,120, 0.3) 31.44%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">77.71%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="520.omnetpp_r.html?c=10000000000&m=1011&l=01&t=010000">520.omnetpp_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.75%,rgba(48,186,120, 0.3) 37.75%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.28%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 18.75%,rgba(48,186,120, 0.3) 18.75%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">62.47%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 27.73%,rgba(48,186,120, 0.3) 27.73%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">73.26%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="523.xalancbmk_r.html?c=10000000000&m=1011&l=01&t=010000">523.xalancbmk_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 20.12%,rgba(48,186,120, 0.3) 20.12%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">64.11%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 5.48%,rgba(48,186,120, 0.3) 5.48%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">46.53%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 27.16%,rgba(48,186,120, 0.3) 27.16%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">72.57%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="525.x264_r.html?c=10000000000&m=1011&l=01&t=010000">525.x264_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.04%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.98%,rgba(48,186,120, 0.3) 35.98%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">83.16%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.95%,rgba(48,186,120, 0.3) 35.95%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">83.13%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="531.deepsjeng_r.html?c=10000000000&m=1011&l=01&t=010000">531.deepsjeng_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.10%</td>
+      <td class="percent  cmpseparator">99.10%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.01%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="541.leela_r.html?c=10000000000&m=1011&l=01&t=010000">541.leela_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 10.93%,rgba(48,186,120, 0.3) 10.93%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">53.07%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0.00%,rgba(48,186,120, 0.3) 0.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">39.95%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 29.41%,rgba(48,186,120, 0.3) 29.41%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">75.28%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="548.exchange2_r.html?c=10000000000&m=1011&l=01&t=010000">548.exchange2_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.50%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 21.53%,rgba(48,186,120, 0.3) 21.53%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">65.81%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 21.26%,rgba(48,186,120, 0.3) 21.26%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">65.49%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="557.xz_r.html?c=10000000000&m=1011&l=01&t=010000">557.xz_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 23.97%,rgba(48,186,120, 0.3) 23.97%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">68.74%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 16.42%,rgba(48,186,120, 0.3) 16.42%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">59.68%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 39.02%,rgba(48,186,120, 0.3) 39.02%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">86.81%</td>
+    </tr>
+  </table>
+  </div>
+  <span class="legend">Smaller binary sizes are always better.</span>
+  <div class="aftertable"></div>
+  </div>
+  <div>
+  <h2>Intel Cascade Lake Xeon</h2>
+  <h3>Run-times</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">Normal</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr cmpseparator">LTO+PGO</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr">LTO+PGO</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="500.perlbench_r.html?c=10000000000&m=1011&l=01&t=010000">500.perlbench_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">101.49%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 19.05%,rgba(48,186,120, 0.3) 19.05%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">91.08%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 14.42%,rgba(48,186,120, 0.3) 14.42%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.74%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="502.gcc_r.html?c=10000000000&m=1011&l=01&t=010000">502.gcc_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.61%,rgba(48,186,120, 0.3) 37.61%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.43%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 14.38%,rgba(48,186,120, 0.3) 14.38%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.73%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 25.91%,rgba(48,186,120, 0.3) 25.91%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.06%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="505.mcf_r.html?c=10000000000&m=1011&l=01&t=010000">505.mcf_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0.00%,rgba(48,186,120, 0.3) 0.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.59%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 8.16%,rgba(48,186,120, 0.3) 8.16%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">87.94%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 59.54%,rgba(255,255,255,0) 59.54%,rgba(255,255,255,0) 100%);">102.75%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="520.omnetpp_r.html?c=10000000000&m=1011&l=01&t=010000">520.omnetpp_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 27.35%,rgba(48,186,120, 0.3) 27.35%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.47%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 14.23%,rgba(48,186,120, 0.3) 14.23%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.69%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.97%,rgba(48,186,120, 0.3) 35.97%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">95.96%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="523.xalancbmk_r.html?c=10000000000&m=1011&l=01&t=010000">523.xalancbmk_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 22.49%,rgba(48,186,120, 0.3) 22.49%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">92.07%</td>
+      <td class="percent cmpseparator">98.24%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 73.24%,rgba(255,255,255,0) 73.24%,rgba(255,255,255,0) 100%);">106.70%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="525.x264_r.html?c=10000000000&m=1011&l=01&t=010000">525.x264_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">98.32%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 24.80%,rgba(48,186,120, 0.3) 24.80%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">92.74%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 30.29%,rgba(48,186,120, 0.3) 30.29%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">94.32%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="531.deepsjeng_r.html?c=10000000000&m=1011&l=01&t=010000">531.deepsjeng_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 22.04%,rgba(48,186,120, 0.3) 22.04%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">91.94%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 10.60%,rgba(48,186,120, 0.3) 10.60%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">88.64%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.56%,rgba(48,186,120, 0.3) 37.56%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.41%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="541.leela_r.html?c=10000000000&m=1011&l=01&t=010000">541.leela_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 30.32%,rgba(48,186,120, 0.3) 30.32%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">94.33%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 31.96%,rgba(48,186,120, 0.3) 31.96%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">94.80%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.50%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="548.exchange2_r.html?c=10000000000&m=1011&l=01&t=010000">548.exchange2_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 41.59%,rgba(48,186,120, 0.3) 41.59%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.58%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 41.59%,rgba(48,186,120, 0.3) 41.59%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">97.58%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="557.xz_r.html?c=10000000000&m=1011&l=01&t=010000">557.xz_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">98.01%</td>
+      <td class="percent cmpseparator">99.01%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent">101.01%</td>
+    </tr>
+  </table>
+  </div>
+  <table class="legend">
+  </table>
+  <span class="legend">  The compiler used was GCC master commit 6e1e0decc9e from 22nd July 2020, 541.leela_r was benchmarked with this revision patched to fix PR 96382.<br>
+  Naturally, the smaller the run-times, the better.  On the other hand, rates and especially their geometric means are better when they are greater.
+  <br>
+  See also continuous gcc options benchmarking at <a href="https://lnt.opensuse.org/db_default/v4/SPEC/spec_report/options">https://lnt.opensuse.org/db_default/v4/SPEC/spec_report/options</a>.
+  </span>  <div class="aftertable"></div>
+  <h3>Non-debug executable sizes</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">Normal</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr cmpseparator">LTO+PGO</th>
+      <th class="relperhdr">LTO</th>
+      <th class="relperhdr">LTO+PGO</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="500.perlbench_r.html?c=10000000000&m=1011&l=01&t=010000">500.perlbench_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 59.36%,rgba(255,255,255,0) 59.36%,rgba(255,255,255,0) 100%);">111.35%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.68%,rgba(48,186,120, 0.3) 35.68%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">82.62%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 28.74%,rgba(48,186,120, 0.3) 28.74%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">74.20%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="502.gcc_r.html?c=10000000000&m=1011&l=01&t=010000">502.gcc_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 52.21%,rgba(255,255,255,0) 52.21%,rgba(255,255,255,0) 100%);">102.68%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 47.39%,rgba(48,186,120, 0.3) 47.39%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.83%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 45.31%,rgba(48,186,120, 0.3) 45.31%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">94.31%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="505.mcf_r.html?c=10000000000&m=1011&l=01&t=010000">505.mcf_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 32.57%,rgba(48,186,120, 0.3) 32.57%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">78.85%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 17.37%,rgba(48,186,120, 0.3) 17.37%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">60.41%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 30.73%,rgba(48,186,120, 0.3) 30.73%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">76.61%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="520.omnetpp_r.html?c=10000000000&m=1011&l=01&t=010000">520.omnetpp_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.74%,rgba(48,186,120, 0.3) 37.74%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">85.12%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 19.68%,rgba(48,186,120, 0.3) 19.68%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">63.22%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 28.79%,rgba(48,186,120, 0.3) 28.79%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">74.26%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="523.xalancbmk_r.html?c=10000000000&m=1011&l=01&t=010000">523.xalancbmk_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 22.28%,rgba(48,186,120, 0.3) 22.28%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">66.37%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 7.77%,rgba(48,186,120, 0.3) 7.77%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">48.76%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 28.14%,rgba(48,186,120, 0.3) 28.14%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">73.47%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="525.x264_r.html?c=10000000000&m=1011&l=01&t=010000">525.x264_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.76%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.24%,rgba(48,186,120, 0.3) 35.24%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">82.09%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.40%,rgba(48,186,120, 0.3) 35.40%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">82.28%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="531.deepsjeng_r.html?c=10000000000&m=1011&l=01&t=010000">531.deepsjeng_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.10%</td>
+      <td class="percent  cmpseparator">99.09%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.99%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="541.leela_r.html?c=10000000000&m=1011&l=01&t=010000">541.leela_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 10.91%,rgba(48,186,120, 0.3) 10.91%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">52.58%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0.00%,rgba(48,186,120, 0.3) 0.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">39.33%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 29.24%,rgba(48,186,120, 0.3) 29.24%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">74.81%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="548.exchange2_r.html?c=10000000000&m=1011&l=01&t=010000">548.exchange2_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.90%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 20.22%,rgba(48,186,120, 0.3) 20.22%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">63.86%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 19.75%,rgba(48,186,120, 0.3) 19.75%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">63.29%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="557.xz_r.html?c=10000000000&m=1011&l=01&t=010000">557.xz_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 24.59%,rgba(48,186,120, 0.3) 24.59%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">69.17%</td>
+      <td class="percent  cmpseparator" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 17.23%,rgba(48,186,120, 0.3) 17.23%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">60.23%</td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 39.36%,rgba(48,186,120, 0.3) 39.36%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">87.09%</td>
+    </tr>
+  </table>
+  </div>
+  <span class="legend">Smaller binary sizes are always better.</span>
+  <div class="aftertable"></div>
+  </div>
+
+</main>
+
+<footer>
+
+  <p>
+
+    <strong>DISCLAIMER:</strong> All the SPEC results are
+    "non-reportable".  The measurements were taken in order to compare
+    different compilers, not different hardware, please do not attempt
+    to make any comparisons of the different machines used.  Moreover,
+    we have broken various SPEC benchmarking rules, we have even
+    patched some benchmark sources to be able to compile them with
+    <tt>-fstrict-aliasing</tt>, build with <tt>-fno-common</tt>, and
+    so forth.  And the data may be just wrong, the scripts generating
+    all the fancy graphs and tables have been known to contain bugs in
+    the past.  On the other hand, this is the data that we use to
+    evaluate where GCC stands and we believe that overall this
+    comparison of compilers is a useful one.
+
+  </p>
+
+  <div id="last">&nbsp;</div>
+</footer>
+</body>
+</html>

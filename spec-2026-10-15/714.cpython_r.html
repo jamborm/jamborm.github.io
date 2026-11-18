@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SPEC comparison - 714.cpython_r</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-error-bars@1.2.2"></script>
+
+</head>
+<body>
+<header>
+  <h1>SPEC CPU result comparison</h1>
+  <span id="subtitle">15th October 2026 - Normalized report</span>
+
+</header>
+<main>
+  <h1>714.cpython_r</h1>
+  <p class="bench_desc">Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability. Python is dynamically type-checked and garbage-collected.  </p>
+  <p class="bench_link">Official description is available at <a href="https://www.spec.org/cpu2026/Docs/benchmarks/714.cpython_r/714.cpython_r.html">https://www.spec.org/cpu2026/Docs/benchmarks/714.cpython_r/714.cpython_r.html</a>.  </p>
+<noscript>
+<p><strong style="color:red;">This page uses JavaScript to display charts.  Without JavaScript it is unfortunately of only limited use.</strong></p>
+</noscript>
+
+<div id="toptools">
+
+<div id="benchmarktoc">
+<div class="choice_header">On this page:</div>
+<ul>
+  <li><a href="#b1">AMD EPYC 8635P (zen5 based Sorano)</a>
+  <li><a href="#b2">AMD EPYC 75F3 (zen3 based high-frequency Milan)</a>
+  <li><a href="#gcccmp">GCC improvements and regressions</a>
+  <li><a href="#othercmp">Comparisons with other compilers</a>
+</ul>
+</div>
+
+<div id="cpanel">
+<div class="choice_header">Compilers:</div>
+  <input type="checkbox" id="compiler_trunk" checked>
+  <label for="compiler_trunk">trunk</label>
+  <input type="checkbox" id="compiler_gcc16" checked>
+  <label for="compiler_gcc16">gcc16</label>
+  <input type="checkbox" id="compiler_gcc15" checked>
+  <label for="compiler_gcc15">gcc15</label>
+  <input type="checkbox" id="compiler_gcc14" checked>
+  <label for="compiler_gcc14">gcc14</label>
+  <input type="checkbox" id="compiler_gcc13" checked>
+  <label for="compiler_gcc13">gcc13</label>
+  <input type="checkbox" id="compiler_icx" checked>
+  <label for="compiler_icx">icx</label>
+  <input type="checkbox" id="compiler_llvm" checked>
+  <label for="compiler_llvm">llvm</label>
+  <input type="checkbox" id="compiler_aocc" checked>
+  <label for="compiler_aocc">aocc</label>
+<br>
+<div class="choice_header">Methods:</div>
+  <input type="checkbox" id="method_std" checked>
+  <label for="method_std">std</label>
+  <input type="checkbox" id="method_pgo" checked>
+  <label for="method_pgo">pgo</label>
+  <input type="checkbox" id="method_lto" checked>
+  <label for="method_lto">lto</label>
+  <input type="checkbox" id="method_pgolto" checked>
+  <label for="method_pgolto">pgolto</label>
+  <input type="checkbox" id="method_thinlto" checked>
+  <label for="method_thinlto">thinlto</label>
+  <input type="checkbox" id="method_pgothinlto" checked>
+  <label for="method_pgothinlto">pgothinlto</label>
+<br>
+<div class="choice_header">Levels:</div>
+  <input type="checkbox" id="level_O2" checked>
+  <label for="level_O2">O2</label>
+  <input type="checkbox" id="level_O3" checked>
+  <label for="level_O3">O3</label>
+  <input type="checkbox" id="level_Ofast" checked>
+  <label for="level_Ofast">Ofast</label>
+<br>
+<div class="choice_header">Targets:</div>
+  <input type="checkbox" id="target_generic" checked>
+  <label for="target_generic">generic</label>
+  <input type="checkbox" id="target_native" checked>
+  <label for="target_native">native</label>
+  <input type="checkbox" id="target_native_vec128" checked>
+  <label for="target_native_vec128">native_vec128</label>
+  <input type="checkbox" id="target_native_vec256" checked>
+  <label for="target_native_vec256">native_vec256</label>
+  <input type="checkbox" id="target_x86_64_v3" checked>
+  <label for="target_x86_64_v3">x86_64_v3</label>
+  <input type="checkbox" id="target_znver3" checked>
+  <label for="target_znver3">znver3</label>
+  <input type="checkbox" id="target_znver4" checked>
+  <label for="target_znver4">znver4</label>
+<br>
+ <button id="selall_button" type="button">Select all of the above</button>
+ <button id="selnone_button" type="button">Select none of the above</button>
+ <button id="selofastlto_button" type="button">Select LTO Ofast native</button>
+ <button id="selo2lto_button" type="button">Select LTO O2 generic</button>
+<br>
+<div class="choice_header">Other options:</div>
+  <input type="checkbox" id="show_debugsize">
+  <label for="show_debugsize"> Show sizes of debug sections </label><br>
+<div id="for_self_link">
+  <a id="link_to_self"></a><br>
+</div>
+</div>
+<div>&nbsp;</div>
+</div>
+
+
+<a name="b1"></a>
+<h2>AMD EPYC 8635P (zen5 based Sorano)</h2>
+
+  <p>The values shown as "run-times" are not actual times but
+  normalized times, the biggest obtained time was assigned to be 500
+  and the others were scaled appropriately</p>
+  <div style="display: inline-block; width: 20%">
+    <canvas id="canvas_size_1"></canvas><br>
+
+  </div>
+  <div style="display: inline-block; width: 75%">
+    <canvas id="canvas_time_1"></canvas><br>
+<noscript>JavaScript chart missing here.<br>&nbsp</noscript>
+  </div>
+  <table class="legend">
+    <tr>
+    <td>trunk</td>
+    <td>GCC 17.0.0 20261015 (experimental) (revision 84348add236100e5f69a3e9ec4f7b1038bf2b83d)</td>
+    </tr>
+    <tr>
+    <td>gcc16</td>
+    <td>GCC 16.2.0 (revision 78d4ac73dd391005b895a6148cd9831e28e1208b)</td>
+    </tr>
+    <tr>
+    <td>gcc15</td>
+    <td>GCC 15.3.0 (revision 4db0e8df15bef836558857c291c323add11d035c)</td>
+    </tr>
+    <tr>
+    <td>gcc14</td>
+    <td>GCC 14.4.0 (revision 98859340e0916f004ac78d5fe20549fb100d41aa)</td>
+    </tr>
+    <tr>
+    <td>gcc13</td>
+    <td>GCC 13.5.0 (revision 0bba35ae26a574150f6d1ae55f8ab1f4c2314a56)</td>
+    </tr>
+    <tr>
+    <td>icx</td>
+    <td>Intel(R) oneAPI DPC++/C++ Compiler 2026.1.1 (2026.1.1.20260724), ifx (IFX) 2026.1.1 20260724</td>
+    </tr>
+    <tr>
+    <td>llvm</td>
+    <td>clang version 23.1.3 (/labs/mjambor/git/llvm 0d261d1ca552c95a8f007e061c787ac7132fbcbc), flang version 23.1.3 (/labs/mjambor/git/llvm 0d261d1ca552c95a8f007e061c787ac7132fbcbc)</td>
+    </tr>
+    <tr>
+    <td>aocc</td>
+    <td>AMD clang version 17.0.6 (CLANG: AOCC_5.2.0-Build#2035 2026_04_10)</td>
+    </tr>
+  </table>
+    <div class="legend">Smaller is better.</div>
+
+  <script>
+    var ctx1 = document.getElementById('canvas_time_1').getContext('2d');
+    var color = Chart.helpers.color;
+    var chart_time1 = new Chart(ctx1, {
+    type: 'horizontalBar',
+	options: {
+            title: {
+                display: true,
+                text: 'Run-time'
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+	    scales: {
+		xAxes: [{
+		    ticks: {
+                        display: false,
+			beginAtZero: true
+		    }
+		}]
+	    }
+	}
+    });
+
+    var ctx_size1 = document.getElementById('canvas_size_1').getContext('2d');
+    var chart_size1 = new Chart(ctx_size1, {
+    type: 'horizontalBar',
+	options: {
+            title: {
+                display: true,
+                text: 'Binary size'
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+	    scales: {
+                scaleLabel: {display: false},
+		xAxes: [{
+                    stacked: true,
+		    ticks: {
+                        display: false,
+			beginAtZero: true
+		    }
+		}],
+                scaleLabel: {display: false},
+                yAxes: [{
+                    stacked: true,
+		    ticks: {
+			beginAtZero: true
+		    }
+		}]
+	    },
+            tooltips: {
+                callbacks: {
+                    afterTitle: function() {
+                        window.total = 0;
+                    },
+                    label: function(t, d) {
+                        var datasetLabel = d.datasets[t.datasetIndex].label;
+                        var xLabel = Math.abs(t.xLabel);
+                        window.total += xLabel;
+                        return datasetLabel + ': ' + xLabel;
+                     },
+                     footer: function() {
+                        return "TOTAL: " + window.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                     }
+                }
+            }
+	}
+    });
+
+
+  </script>
+
+
+<a name="b2"></a>
+<h2>AMD EPYC 75F3 (zen3 based high-frequency Milan)</h2>
+
+  <p>The values shown as "run-times" are not actual times but
+  normalized times, the biggest obtained time was assigned to be 500
+  and the others were scaled appropriately</p>
+  <div style="display: inline-block; width: 20%">
+    <canvas id="canvas_size_2"></canvas><br>
+
+  </div>
+  <div style="display: inline-block; width: 75%">
+    <canvas id="canvas_time_2"></canvas><br>
+<noscript>JavaScript chart missing here.<br>&nbsp</noscript>
+  </div>
+  <table class="legend">
+    <tr>
+    <td>trunk</td>
+    <td>GCC 17.0.0 20261015 (experimental) (revision 84348add236100e5f69a3e9ec4f7b1038bf2b83d)</td>
+    </tr>
+    <tr>
+    <td>gcc16</td>
+    <td>GCC 16.2.0 (revision 78d4ac73dd391005b895a6148cd9831e28e1208b)</td>
+    </tr>
+    <tr>
+    <td>gcc15</td>
+    <td>GCC 15.3.0 (revision 4db0e8df15bef836558857c291c323add11d035c)</td>
+    </tr>
+    <tr>
+    <td>icx</td>
+    <td>Intel(R) oneAPI DPC++/C++ Compiler 2026.1.1 (2026.1.1.20260724), ifx (IFX) 2026.1.1 20260724</td>
+    </tr>
+    <tr>
+    <td>llvm</td>
+    <td>clang version 23.1.3 (https://github.com/llvm/llvm-project.git 0d261d1ca552c95a8f007e061c787ac7132fbcbc), flang version 23.1.3 (https://github.com/llvm/llvm-project.git 0d261d1ca552c95a8f007e061c787ac7132fbcbc)</td>
+    </tr>
+  </table>
+    <div class="legend">Smaller is better.</div>
+
+  <script>
+    var ctx2 = document.getElementById('canvas_time_2').getContext('2d');
+    var color = Chart.helpers.color;
+    var chart_time2 = new Chart(ctx2, {
+    type: 'horizontalBar',
+	options: {
+            title: {
+                display: true,
+                text: 'Run-time'
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+	    scales: {
+		xAxes: [{
+		    ticks: {
+                        display: false,
+			beginAtZero: true
+		    }
+		}]
+	    }
+	}
+    });
+
+    var ctx_size2 = document.getElementById('canvas_size_2').getContext('2d');
+    var chart_size2 = new Chart(ctx_size2, {
+    type: 'horizontalBar',
+	options: {
+            title: {
+                display: true,
+                text: 'Binary size'
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+	    scales: {
+                scaleLabel: {display: false},
+		xAxes: [{
+                    stacked: true,
+		    ticks: {
+                        display: false,
+			beginAtZero: true
+		    }
+		}],
+                scaleLabel: {display: false},
+                yAxes: [{
+                    stacked: true,
+		    ticks: {
+			beginAtZero: true
+		    }
+		}]
+	    },
+            tooltips: {
+                callbacks: {
+                    afterTitle: function() {
+                        window.total = 0;
+                    },
+                    label: function(t, d) {
+                        var datasetLabel = d.datasets[t.datasetIndex].label;
+                        var xLabel = Math.abs(t.xLabel);
+                        window.total += xLabel;
+                        return datasetLabel + ': ' + xLabel;
+                     },
+                     footer: function() {
+                        return "TOTAL: " + window.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                     }
+                }
+            }
+	}
+    });
+
+
+  </script>
+
+<script>
+
+function regenerate_1()
+{
+  var gen_labels = [];
+  var gen_borderColors = [];
+  var gen_backgroundColors = [];
+  var gen_data = [];
+  var gen_errorBars = [];
+  var all = [
+[[compiler_trunk, method_std, level_O2, target_generic], 'trunk std O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.2)', 460, 7, 0],
+[[compiler_trunk, method_std, level_Ofast, target_generic], 'trunk std Ofast generic', 'rgb(2, 211, 95)', 'rgba(2, 211, 95, 0.2)', 449, 11, 1],
+[[compiler_trunk, method_std, level_Ofast, target_native], 'trunk std Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.2)', 460, 2, -3],
+[[compiler_trunk, method_pgo, level_O2, target_generic], 'trunk pgo O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.4)', 377, 6, 2],
+[[compiler_trunk, method_pgo, level_Ofast, target_native], 'trunk pgo Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.4)', 372, 2, 0],
+[[compiler_trunk, method_lto, level_O2, target_generic], 'trunk lto O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.6)', 429, 9, 4],
+[[compiler_trunk, method_lto, level_O2, target_native], 'trunk lto O2 native', 'rgb(130, 255, 120)', 'rgba(130, 255, 120, 0.6)', 429, 6, 3],
+[[compiler_trunk, method_lto, level_O2, target_x86_64_v3], 'trunk lto O2 x86_64_v3', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 439, 2, -5],
+[[compiler_trunk, method_lto, level_O3, target_generic], 'trunk lto O3 generic', 'rgb(2, 211, 95)', 'rgba(2, 211, 95, 0.6)', 408, 4, 0],
+[[compiler_trunk, method_lto, level_O3, target_native], 'trunk lto O3 native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.6)', 429, 4, -1],
+[[compiler_trunk, method_lto, level_O3, target_x86_64_v3], 'trunk lto O3 x86_64_v3', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 424, 5, 4],
+[[compiler_trunk, method_lto, level_Ofast, target_native], 'trunk lto Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.6)', 429, 11, 2],
+[[compiler_trunk, method_lto, level_Ofast, target_native_vec128], 'trunk lto Ofast native_vec128', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 403, 9, 3],
+[[compiler_trunk, method_lto, level_Ofast, target_native_vec256], 'trunk lto Ofast native_vec256', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 429, 1, 0],
+[[compiler_trunk, method_lto, level_Ofast, target_x86_64_v3], 'trunk lto Ofast x86_64_v3', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 434, 9, -4],
+[[compiler_trunk, method_pgolto, level_O2, target_generic], 'trunk pgolto O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.8)', 351, 12, 3],
+[[compiler_trunk, method_pgolto, level_Ofast, target_native], 'trunk pgolto Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.8)', 341, 12, 1],
+[[compiler_gcc16, method_std, level_Ofast, target_native], 'gcc16 std Ofast native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.2)', 465, 9, 2],
+[[compiler_gcc16, method_pgo, level_O2, target_generic], 'gcc16 pgo O2 generic', 'rgb(112, 214, 224)', 'rgba(112, 214, 224, 0.4)', 377, 5, 5],
+[[compiler_gcc16, method_pgo, level_Ofast, target_native], 'gcc16 pgo Ofast native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.4)', 372, 2, 1],
+[[compiler_gcc16, method_lto, level_O2, target_generic], 'gcc16 lto O2 generic', 'rgb(112, 214, 224)', 'rgba(112, 214, 224, 0.6)', 429, 7, 3],
+[[compiler_gcc16, method_lto, level_O2, target_native], 'gcc16 lto O2 native', 'rgb(102, 204, 214)', 'rgba(102, 204, 214, 0.6)', 429, 13, 1],
+[[compiler_gcc16, method_lto, level_O2, target_x86_64_v3], 'gcc16 lto O2 x86_64_v3', 'rgb(112, 214, 224)', 'rgba(112, 214, 224, 0.6)', 434, 2, 2],
+[[compiler_gcc16, method_lto, level_O3, target_generic], 'gcc16 lto O3 generic', 'rgb(0, 188, 236)', 'rgba(0, 188, 236, 0.6)', 413, 6, 0],
+[[compiler_gcc16, method_lto, level_O3, target_native], 'gcc16 lto O3 native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.6)', 429, 12, 3],
+[[compiler_gcc16, method_lto, level_O3, target_x86_64_v3], 'gcc16 lto O3 x86_64_v3', 'rgb(0, 188, 236)', 'rgba(0, 188, 236, 0.6)', 439, 4, -1],
+[[compiler_gcc16, method_lto, level_Ofast, target_native], 'gcc16 lto Ofast native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.6)', 429, 5, 2],
+[[compiler_gcc16, method_lto, level_Ofast, target_x86_64_v3], 'gcc16 lto Ofast x86_64_v3', 'rgb(0, 188, 236)', 'rgba(0, 188, 236, 0.6)', 424, 4, 3],
+[[compiler_gcc16, method_pgolto, level_O2, target_generic], 'gcc16 pgolto O2 generic', 'rgb(112, 214, 224)', 'rgba(112, 214, 224, 0.8)', 356, 6, -1],
+[[compiler_gcc16, method_pgolto, level_Ofast, target_native], 'gcc16 pgolto Ofast native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.8)', 330, 5, 4],
+[[compiler_gcc15, method_lto, level_O2, target_generic], 'gcc15 lto O2 generic', 'rgb(0, 192, 201)', 'rgba(0, 192, 201, 0.6)', 424, 7, 2],
+[[compiler_gcc15, method_lto, level_O3, target_x86_64_v3], 'gcc15 lto O3 x86_64_v3', 'rgb(2, 164, 156)', 'rgba(2, 164, 156, 0.6)', 434, 16, -1],
+[[compiler_gcc15, method_lto, level_Ofast, target_native], 'gcc15 lto Ofast native', 'rgb(0, 7, 176)', 'rgba(0, 7, 176, 0.6)', 429, 7, 2],
+[[compiler_gcc15, method_pgolto, level_O2, target_generic], 'gcc15 pgolto O2 generic', 'rgb(0, 192, 201)', 'rgba(0, 192, 201, 0.8)', 367, 5, 3],
+[[compiler_gcc15, method_pgolto, level_Ofast, target_native], 'gcc15 pgolto Ofast native', 'rgb(0, 7, 176)', 'rgba(0, 7, 176, 0.8)', 346, 6, 3],
+[[compiler_gcc14, method_lto, level_O2, target_generic], 'gcc14 lto O2 generic', 'rgb(13, 44, 64)', 'rgba(13, 44, 64, 0.6)', 444, 9, 2],
+[[compiler_gcc14, method_lto, level_Ofast, target_native], 'gcc14 lto Ofast native', 'rgb(13, 44, 64)', 'rgba(13, 44, 64, 0.6)', 429, 5, 2],
+[[compiler_gcc13, method_lto, level_O2, target_generic], 'gcc13 lto O2 generic', 'rgb(13, 44, 64)', 'rgba(13, 44, 64, 0.6)', 439, 5, -2],
+[[compiler_gcc13, method_lto, level_Ofast, target_native], 'gcc13 lto Ofast native', 'rgb(13, 44, 64)', 'rgba(13, 44, 64, 0.6)', 424, 5, 1],
+[[compiler_icx, method_std, level_Ofast, target_native], 'icx std Ofast native', 'rgb(132, 23, 129)', 'rgba(132, 23, 129, 0.2)', 491, 4, 0],
+[[compiler_icx, method_lto, level_O2, target_generic], 'icx lto O2 generic', 'rgb(247, 163, 213)', 'rgba(247, 163, 213, 0.6)', 455, 6, -4],
+[[compiler_icx, method_lto, level_Ofast, target_native], 'icx lto Ofast native', 'rgb(132, 23, 129)', 'rgba(132, 23, 129, 0.6)', 444, 2, -4],
+[[compiler_icx, method_pgolto, level_Ofast, target_native], 'icx pgolto Ofast native', 'rgb(132, 23, 129)', 'rgba(132, 23, 129, 0.8)', 367, 5, -1],
+[[compiler_llvm, method_std, level_O2, target_generic], 'llvm std O2 generic', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.2)', 480, 3, 0],
+[[compiler_llvm, method_std, level_Ofast, target_native], 'llvm std Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.2)', 496, 1, -1],
+[[compiler_llvm, method_pgo, level_O2, target_generic], 'llvm pgo O2 generic', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.4)', 398, 2, 0],
+[[compiler_llvm, method_pgo, level_Ofast, target_native], 'llvm pgo Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.4)', 403, 2, -3],
+[[compiler_llvm, method_lto, level_O2, target_generic], 'llvm lto O2 generic', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.6)', 444, 4, 2],
+[[compiler_llvm, method_lto, level_O2, target_x86_64_v3], 'llvm lto O2 x86_64_v3', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.6)', 455, 3, -5],
+[[compiler_llvm, method_lto, level_O3, target_generic], 'llvm lto O3 generic', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 444, 6, -2],
+[[compiler_llvm, method_lto, level_O3, target_native], 'llvm lto O3 native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 444, 3, -3],
+[[compiler_llvm, method_lto, level_O3, target_x86_64_v3], 'llvm lto O3 x86_64_v3', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 444, 6, 2],
+[[compiler_llvm, method_lto, level_Ofast, target_native], 'llvm lto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 455, 2, -2],
+[[compiler_llvm, method_lto, level_Ofast, target_x86_64_v3], 'llvm lto Ofast x86_64_v3', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 449, 5, 2],
+[[compiler_llvm, method_pgolto, level_O2, target_generic], 'llvm pgolto O2 generic', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.8)', 372, 2, 1],
+[[compiler_llvm, method_pgolto, level_Ofast, target_native], 'llvm pgolto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.8)', 361, 7, 4],
+[[compiler_llvm, method_thinlto, level_Ofast, target_native], 'llvm thinlto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 455, 2, -2],
+[[compiler_llvm, method_pgothinlto, level_Ofast, target_native], 'llvm pgothinlto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.8)', 356, 6, 5],
+[[compiler_aocc, method_std, level_Ofast, target_native], 'aocc std Ofast native', 'rgb(253, 154, 43)', 'rgba(253, 154, 43, 0.2)', 496, 3, -1],
+[[compiler_aocc, method_lto, level_Ofast, target_native], 'aocc lto Ofast native', 'rgb(253, 154, 43)', 'rgba(253, 154, 43, 0.6)', 434, 5, 0],
+[[compiler_aocc, method_pgolto, level_Ofast, target_native], 'aocc pgolto Ofast native', 'rgb(253, 154, 43)', 'rgba(253, 154, 43, 0.8)', 382, 8, 3]];
+  var i;
+  var j;
+  var h = 6;
+  for (i = 0; i < 61; i++)
+  {
+    var include = true;
+    for (j = 0; j < 4; j++)
+      if (!all[i][0][j].checked)
+      {
+        include = false;
+        break;
+      }
+    if (!include)
+      continue;
+
+    gen_labels.push(all[i][1]);
+    gen_borderColors.push(all[i][2]);
+    gen_backgroundColors.push(all[i][3]);
+    gen_data.push(all[i][4]);
+    gen_errorBars[all[i][1]] = {plus: all[i][5], minus: all[i][6]};
+    h = h + 1.2;
+  }
+
+  chart_time1.canvas.parentNode.style.height = h.toString() + 'em';
+
+
+  data = {
+    labels: gen_labels,
+    datasets: [
+      {
+        label: 'normalized time',
+        borderColor: gen_borderColors,
+        backgroundColor: gen_backgroundColors,
+        borderWidth: 2,
+        data: gen_data,
+        errorBars: gen_errorBars
+      }
+     ]
+   };
+  chart_time1.data = data;
+  chart_time1.resize();
+  chart_time1.update();
+
+
+  var gen_text = [];
+  var gen_rodata = [];
+  var gen_data = [];
+  var gen_bss = [];
+  var gen_others = [];
+  var gen_debug = [];
+  var gen_l2 = [];
+  var allsz = [
+[[compiler_trunk, method_std, level_O2, target_generic], -2832132, -2444544, -1550020, -23008, -466412, -24780506],
+[[compiler_trunk, method_std, level_Ofast, target_generic], -3452660, -2455424, -1550020, -23008, -480453, -28099503],
+[[compiler_trunk, method_std, level_Ofast, target_native], -3780993, -2476752, -1550020, -23392, -457295, -28653956],
+[[compiler_trunk, method_pgo, level_O2, target_generic], -2009369, -2376960, -1550020, -23008, -513612, -20595273],
+[[compiler_trunk, method_pgo, level_Ofast, target_native], -2222668, -2382528, -1550020, -23328, -508695, -22496325],
+[[compiler_trunk, method_lto, level_O2, target_generic], -2491488, -1220280, -1494568, -10208, -324287, -25332972],
+[[compiler_trunk, method_lto, level_O2, target_native], -2528688, -1222056, -1494536, -10112, -313197, -25368350],
+[[compiler_trunk, method_lto, level_O2, target_x86_64_v3], -2480528, -1220640, -1494536, -10112, -317693, -25345342],
+[[compiler_trunk, method_lto, level_O3, target_generic], -3004462, -1228144, -1494540, -10208, -349537, -28087897],
+[[compiler_trunk, method_lto, level_O3, target_native], -3476653, -1245120, -1494540, -10240, -328555, -29056582],
+[[compiler_trunk, method_lto, level_O3, target_x86_64_v3], -3354030, -1232536, -1494536, -10208, -333371, -28932481],
+[[compiler_trunk, method_lto, level_Ofast, target_native], -3467629, -1245632, -1494540, -10240, -327521, -29039196],
+[[compiler_trunk, method_lto, level_Ofast, target_native_vec128], -3381485, -1228992, -1494540, -10208, -349921, -28989842],
+[[compiler_trunk, method_lto, level_Ofast, target_native_vec256], -3379053, -1231696, -1494536, -10208, -327857, -28876070],
+[[compiler_trunk, method_lto, level_Ofast, target_x86_64_v3], -3347502, -1232568, -1494536, -10208, -332673, -28919477],
+[[compiler_trunk, method_pgolto, level_O2, target_generic], -1669011, -1218552, -1494504, -10096, -380606, -19181099],
+[[compiler_trunk, method_pgolto, level_Ofast, target_native], -1857683, -1218712, -1494536, -10096, -374813, -20696813],
+[[compiler_gcc16, method_std, level_Ofast, target_native], -3817409, -2476048, -1550020, -23392, -458703, -28673292],
+[[compiler_gcc16, method_pgo, level_O2, target_generic], -2009961, -2376832, -1550020, -23008, -513564, -20584552],
+[[compiler_gcc16, method_pgo, level_Ofast, target_native], -2220908, -2382592, -1550020, -23328, -507943, -22471995],
+[[compiler_gcc16, method_lto, level_O2, target_generic], -2489696, -1220120, -1494568, -10208, -323611, -25121889],
+[[compiler_gcc16, method_lto, level_O2, target_native], -2528624, -1222056, -1494536, -10112, -314293, -25160726],
+[[compiler_gcc16, method_lto, level_O2, target_x86_64_v3], -2481552, -1220448, -1494568, -10112, -317685, -25126144],
+[[compiler_gcc16, method_lto, level_O3, target_generic], -3022062, -1228048, -1494596, -10272, -351173, -27800269],
+[[compiler_gcc16, method_lto, level_O3, target_native], -3520429, -1245488, -1494572, -10240, -329747, -28796686],
+[[compiler_gcc16, method_lto, level_O3, target_x86_64_v3], -3388270, -1232672, -1494572, -10240, -333023, -28649499],
+[[compiler_gcc16, method_lto, level_Ofast, target_native], -3512685, -1245616, -1494572, -10240, -328905, -28788584],
+[[compiler_gcc16, method_lto, level_Ofast, target_x86_64_v3], -3381870, -1232608, -1494572, -10240, -332345, -28642699],
+[[compiler_gcc16, method_pgolto, level_O2, target_generic], -1673235, -1218264, -1494504, -10096, -379926, -19171927],
+[[compiler_gcc16, method_pgolto, level_Ofast, target_native], -1871651, -1218552, -1494536, -10096, -375077, -20752448],
+[[compiler_gcc15, method_lto, level_O2, target_generic], -2297052, -1222480, -1494568, -10176, -294803, -24510719],
+[[compiler_gcc15, method_lto, level_O3, target_x86_64_v3], -3200238, -1236992, -1494536, -10208, -298315, -27881695],
+[[compiler_gcc15, method_lto, level_Ofast, target_native], -3354477, -1253440, -1494536, -10240, -294825, -28108616],
+[[compiler_gcc15, method_pgolto, level_O2, target_generic], -1542755, -1219120, -1494504, -10096, -352262, -18726626],
+[[compiler_gcc15, method_pgolto, level_Ofast, target_native], -1711779, -1219472, -1494536, -10096, -340493, -20137583],
+[[compiler_gcc14, method_lto, level_O2, target_generic], -2252987, -1222280, -1494568, -10160, -309455, -24499657],
+[[compiler_gcc14, method_lto, level_Ofast, target_native], -2859767, -1236768, -1494536, -10200, -316657, -27093298],
+[[compiler_gcc13, method_lto, level_O2, target_generic], -2188418, -1222519, -1494568, -10160, -307547, -24394871],
+[[compiler_gcc13, method_lto, level_Ofast, target_native], -2806198, -1234944, -1494536, -10200, -312993, -26957062],
+[[compiler_icx, method_std, level_Ofast, target_native], -2939705, -2963776, -1470296, -26864, -464514, -20485020],
+[[compiler_icx, method_lto, level_O2, target_generic], -2889257, -1665472, -1421768, -13920, -320966, -22663863],
+[[compiler_icx, method_lto, level_Ofast, target_native], -3062761, -1705600, -1421704, -13920, -333742, -23673686],
+[[compiler_icx, method_pgolto, level_Ofast, target_native], -2487689, -1682176, -1421704, -13920, -401566, -20388014],
+[[compiler_llvm, method_std, level_O2, target_generic], -2489446, -1908883, -1468268, -22464, -1874681, -15839364],
+[[compiler_llvm, method_std, level_Ofast, target_native], -2741779, -1932263, -1468268, -22928, -1890801, -16139742],
+[[compiler_llvm, method_pgo, level_O2, target_generic], -2233477, -1849891, -1468268, -22464, -1965305, -15211405],
+[[compiler_llvm, method_pgo, level_Ofast, target_native], -2300589, -1869927, -1468268, -22928, -1963897, -15159127],
+[[compiler_llvm, method_lto, level_O2, target_generic], -2471815, -709952, -1419260, -9936, -1672459, -15715614],
+[[compiler_llvm, method_lto, level_O2, target_x86_64_v3], -2549444, -713568, -1419260, -9936, -1671710, -15786550],
+[[compiler_llvm, method_lto, level_O3, target_generic], -2581991, -711229, -1419260, -9936, -1684079, -15495843],
+[[compiler_llvm, method_lto, level_O3, target_native], -2792289, -725197, -1419260, -9936, -1683262, -16039874],
+[[compiler_llvm, method_lto, level_O3, target_x86_64_v3], -2661764, -714397, -1419260, -9936, -1683350, -15568048],
+[[compiler_llvm, method_lto, level_Ofast, target_native], -2786401, -725197, -1419260, -9936, -1683007, -16030079],
+[[compiler_llvm, method_lto, level_Ofast, target_x86_64_v3], -2656004, -714349, -1419260, -9936, -1683199, -15558824],
+[[compiler_llvm, method_pgolto, level_O2, target_generic], -2046405, -701821, -1419260, -9952, -1756043, -14176395],
+[[compiler_llvm, method_pgolto, level_Ofast, target_native], -2123277, -716288, -1419260, -9952, -1755619, -14131023],
+[[compiler_llvm, method_thinlto, level_Ofast, target_native], -2881825, -728679, -1420344, -10016, -1718267, -44305738],
+[[compiler_llvm, method_pgothinlto, level_Ofast, target_native], -2054333, -716263, -1420364, -9968, -1778279, -21757153],
+[[compiler_aocc, method_std, level_Ofast, target_native], -2616179, -1946151, -1468156, -22928, -1887105, -19876345],
+[[compiler_aocc, method_lto, level_Ofast, target_native], -3027441, -754610, -1419180, -9936, -1698662, -24066436],
+[[compiler_aocc, method_pgolto, level_Ofast, target_native], -2473670, -727618, -1419180, -9952, -1794622, -22028766]];
+  for (i = 0; i < 61; i++)
+  {
+    var include = true;
+    for (j = 0; j < 4; j++)
+      if (!all[i][0][j].checked)
+      {
+        include = false;
+        break;
+      }
+    if (!include)
+      continue;
+    gen_l2.push(" ");
+    gen_text.push(allsz[i][1]);
+    gen_rodata.push(allsz[i][2]);
+    gen_data.push(allsz[i][3]);
+    gen_bss.push(allsz[i][4]);
+    gen_others.push(allsz[i][5]);
+    gen_debug.push(allsz[i][6]);
+  }
+
+  szdata = {
+    labels: gen_l2,
+    datasets: [
+      {
+        label: 'text',
+        borderColor: 'rgb(0, 192, 29)',
+        backgroundColor: 'rgba(0, 192, 29, 0.4)',
+        borderWidth: 2,
+        data: gen_text
+      },
+      {
+        label: 'rodata',
+        borderColor: 'rgb(0, 178, 226)',
+        backgroundColor: 'rgba(0, 178, 226, 0.4)',
+        borderWidth: 2,
+        data: gen_rodata
+      },
+      {
+        label: 'data',
+        borderColor: 'rgb(0, 7, 176)',
+        backgroundColor: 'rgba(0, 7, 176, 0.4)',
+        borderWidth: 2,
+        data: gen_data
+      },
+      {
+        label: 'bss',
+        borderColor: 'rgb(132, 23, 129)',
+        backgroundColor: 'rgba(132, 23, 129, 0.4)',
+        borderWidth: 2,
+        data: gen_bss
+      },
+      {
+        label: 'other non-debug',
+        borderColor: 'rgb(100, 100, 100)',
+        backgroundColor: 'rgba(100, 100, 100, 0.4)',
+        borderWidth: 2,
+        data: gen_others
+      }
+     ]
+   };
+   if (show_debugsize.checked)
+      szdata.datasets.push(
+      {
+        label: 'debug sections',
+        borderColor: 'rgb(253, 154, 43)',
+        backgroundColor: 'rgba(253, 154, 43, 0.4)',
+        borderWidth: 2,
+        data: gen_debug
+      })
+
+  chart_size1.canvas.parentNode.style.height = h.toString() + 'em';
+
+  chart_size1.data = szdata;
+  chart_size1.resize();
+  chart_size1.update();
+
+}
+
+function regenerate_2()
+{
+  var gen_labels = [];
+  var gen_borderColors = [];
+  var gen_backgroundColors = [];
+  var gen_data = [];
+  var gen_errorBars = [];
+  var all = [
+[[compiler_trunk, method_std, level_Ofast, target_native], 'trunk std Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.2)', 459, 3, 2],
+[[compiler_trunk, method_pgo, level_O2, target_generic], 'trunk pgo O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.4)', 382, 2, 1],
+[[compiler_trunk, method_pgo, level_Ofast, target_native], 'trunk pgo Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.4)', 359, 4, 3],
+[[compiler_trunk, method_lto, level_O2, target_generic], 'trunk lto O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.6)', 419, 4, 2],
+[[compiler_trunk, method_lto, level_O2, target_x86_64_v3], 'trunk lto O2 x86_64_v3', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 432, 2, 0],
+[[compiler_trunk, method_lto, level_O3, target_generic], 'trunk lto O3 generic', 'rgb(2, 211, 95)', 'rgba(2, 211, 95, 0.6)', 395, 5, 2],
+[[compiler_trunk, method_lto, level_O3, target_native], 'trunk lto O3 native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.6)', 412, 3, 2],
+[[compiler_trunk, method_lto, level_O3, target_x86_64_v3], 'trunk lto O3 x86_64_v3', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 419, 1, 0],
+[[compiler_trunk, method_lto, level_Ofast, target_native], 'trunk lto Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.6)', 412, 3, 2],
+[[compiler_trunk, method_lto, level_Ofast, target_native_vec128], 'trunk lto Ofast native_vec128', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 399, 1, 0],
+[[compiler_trunk, method_lto, level_Ofast, target_x86_64_v3], 'trunk lto Ofast x86_64_v3', 'rgb(154, 205, 50)', 'rgba(154, 205, 50, 0.6)', 419, 5, 2],
+[[compiler_trunk, method_pgolto, level_O2, target_generic], 'trunk pgolto O2 generic', 'rgb(99, 255, 132)', 'rgba(99, 255, 132, 0.8)', 352, 7, 2],
+[[compiler_trunk, method_pgolto, level_Ofast, target_native], 'trunk pgolto Ofast native', 'rgb(0, 192, 29)', 'rgba(0, 192, 29, 0.8)', 329, 4, 2],
+[[compiler_gcc16, method_lto, level_O2, target_generic], 'gcc16 lto O2 generic', 'rgb(112, 214, 224)', 'rgba(112, 214, 224, 0.6)', 415, 2, 0],
+[[compiler_gcc16, method_lto, level_O3, target_native], 'gcc16 lto O3 native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.6)', 409, 3, 2],
+[[compiler_gcc16, method_lto, level_O3, target_x86_64_v3], 'gcc16 lto O3 x86_64_v3', 'rgb(0, 188, 236)', 'rgba(0, 188, 236, 0.6)', 429, 3, 0],
+[[compiler_gcc16, method_lto, level_Ofast, target_native], 'gcc16 lto Ofast native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.6)', 419, 3, 2],
+[[compiler_gcc16, method_pgolto, level_O2, target_generic], 'gcc16 pgolto O2 generic', 'rgb(112, 214, 224)', 'rgba(112, 214, 224, 0.8)', 349, 6, 0],
+[[compiler_gcc16, method_pgolto, level_Ofast, target_native], 'gcc16 pgolto Ofast native', 'rgb(0, 178, 226)', 'rgba(0, 178, 226, 0.8)', 322, 1, 1],
+[[compiler_gcc15, method_lto, level_O2, target_generic], 'gcc15 lto O2 generic', 'rgb(0, 192, 201)', 'rgba(0, 192, 201, 0.6)', 419, 3, 1],
+[[compiler_gcc15, method_lto, level_O3, target_native], 'gcc15 lto O3 native', 'rgb(0, 7, 176)', 'rgba(0, 7, 176, 0.6)', 432, 3, 1],
+[[compiler_gcc15, method_lto, level_O3, target_x86_64_v3], 'gcc15 lto O3 x86_64_v3', 'rgb(2, 164, 156)', 'rgba(2, 164, 156, 0.6)', 422, 4, 2],
+[[compiler_gcc15, method_lto, level_Ofast, target_native], 'gcc15 lto Ofast native', 'rgb(0, 7, 176)', 'rgba(0, 7, 176, 0.6)', 429, 1, 0],
+[[compiler_gcc15, method_pgolto, level_O2, target_generic], 'gcc15 pgolto O2 generic', 'rgb(0, 192, 201)', 'rgba(0, 192, 201, 0.8)', 352, 4, 2],
+[[compiler_gcc15, method_pgolto, level_Ofast, target_native], 'gcc15 pgolto Ofast native', 'rgb(0, 7, 176)', 'rgba(0, 7, 176, 0.8)', 339, 2, 0],
+[[compiler_icx, method_std, level_Ofast, target_native], 'icx std Ofast native', 'rgb(132, 23, 129)', 'rgba(132, 23, 129, 0.2)', 495, 5, 3],
+[[compiler_icx, method_lto, level_Ofast, target_native], 'icx lto Ofast native', 'rgb(132, 23, 129)', 'rgba(132, 23, 129, 0.6)', 432, 3, 2],
+[[compiler_icx, method_pgolto, level_Ofast, target_native], 'icx pgolto Ofast native', 'rgb(132, 23, 129)', 'rgba(132, 23, 129, 0.8)', 346, 4, 1],
+[[compiler_llvm, method_std, level_Ofast, target_native], 'llvm std Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.2)', 495, 4, 3],
+[[compiler_llvm, method_lto, level_O2, target_generic], 'llvm lto O2 generic', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.6)', 442, 5, 2],
+[[compiler_llvm, method_lto, level_O3, target_native], 'llvm lto O3 native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 449, 1, 0],
+[[compiler_llvm, method_lto, level_O3, target_x86_64_v3], 'llvm lto O3 x86_64_v3', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 462, 2, 1],
+[[compiler_llvm, method_lto, level_Ofast, target_native], 'llvm lto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 459, 10, -1],
+[[compiler_llvm, method_pgolto, level_O2, target_generic], 'llvm pgolto O2 generic', 'rgb(255, 99, 132)', 'rgba(255, 99, 132, 0.8)', 339, 3, 1],
+[[compiler_llvm, method_pgolto, level_Ofast, target_native], 'llvm pgolto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.8)', 342, 1, 0],
+[[compiler_llvm, method_thinlto, level_Ofast, target_native], 'llvm thinlto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.6)', 442, 4, 3],
+[[compiler_llvm, method_pgothinlto, level_Ofast, target_native], 'llvm pgothinlto Ofast native', 'rgb(237, 105, 36)', 'rgba(237, 105, 36, 0.8)', 336, 1, 0]];
+  var i;
+  var j;
+  var h = 6;
+  for (i = 0; i < 37; i++)
+  {
+    var include = true;
+    for (j = 0; j < 4; j++)
+      if (!all[i][0][j].checked)
+      {
+        include = false;
+        break;
+      }
+    if (!include)
+      continue;
+
+    gen_labels.push(all[i][1]);
+    gen_borderColors.push(all[i][2]);
+    gen_backgroundColors.push(all[i][3]);
+    gen_data.push(all[i][4]);
+    gen_errorBars[all[i][1]] = {plus: all[i][5], minus: all[i][6]};
+    h = h + 1.2;
+  }
+
+  chart_time2.canvas.parentNode.style.height = h.toString() + 'em';
+
+
+  data = {
+    labels: gen_labels,
+    datasets: [
+      {
+        label: 'normalized time',
+        borderColor: gen_borderColors,
+        backgroundColor: gen_backgroundColors,
+        borderWidth: 2,
+        data: gen_data,
+        errorBars: gen_errorBars
+      }
+     ]
+   };
+  chart_time2.data = data;
+  chart_time2.resize();
+  chart_time2.update();
+
+
+  var gen_text = [];
+  var gen_rodata = [];
+  var gen_data = [];
+  var gen_bss = [];
+  var gen_others = [];
+  var gen_debug = [];
+  var gen_l2 = [];
+  var allsz = [
+[[compiler_trunk, method_std, level_Ofast, target_native], -3803229, -2461472, -1550020, -23072, -458126, -28890625],
+[[compiler_trunk, method_pgo, level_O2, target_generic], -2009497, -2376960, -1550020, -23008, -513671, -20602288],
+[[compiler_trunk, method_pgo, level_Ofast, target_native], -2215980, -2379968, -1550020, -23008, -512618, -22502871],
+[[compiler_trunk, method_lto, level_O2, target_generic], -2491616, -1220280, -1494568, -10208, -324370, -25340334],
+[[compiler_trunk, method_lto, level_O2, target_x86_64_v3], -2480592, -1220640, -1494536, -10112, -317776, -25352737],
+[[compiler_trunk, method_lto, level_O3, target_generic], -3004654, -1228176, -1494540, -10208, -349612, -28093832],
+[[compiler_trunk, method_lto, level_O3, target_native], -3403949, -1232448, -1494536, -10208, -328910, -28953601],
+[[compiler_trunk, method_lto, level_O3, target_x86_64_v3], -3354158, -1232536, -1494536, -10208, -333462, -28939517],
+[[compiler_trunk, method_lto, level_Ofast, target_native], -3394797, -1232384, -1494536, -10208, -328324, -28942681],
+[[compiler_trunk, method_lto, level_Ofast, target_native_vec128], -3345901, -1228320, -1494540, -10208, -351972, -28932630],
+[[compiler_trunk, method_lto, level_Ofast, target_x86_64_v3], -3347438, -1232440, -1494536, -10208, -332732, -28923823],
+[[compiler_trunk, method_pgolto, level_O2, target_generic], -1669107, -1218552, -1494504, -10096, -380673, -19187884],
+[[compiler_trunk, method_pgolto, level_Ofast, target_native], -1848835, -1218840, -1494536, -10096, -377832, -20704492],
+[[compiler_gcc16, method_lto, level_O2, target_generic], -2489824, -1220120, -1494568, -10208, -323694, -25129060],
+[[compiler_gcc16, method_lto, level_O3, target_native], -3439149, -1232640, -1494572, -10240, -329754, -28667893],
+[[compiler_gcc16, method_lto, level_O3, target_x86_64_v3], -3388526, -1232672, -1494572, -10240, -333114, -28657309],
+[[compiler_gcc16, method_lto, level_Ofast, target_native], -3431213, -1232672, -1494572, -10240, -329044, -28663416],
+[[compiler_gcc16, method_pgolto, level_O2, target_generic], -1673395, -1218264, -1494504, -10096, -379985, -19178641],
+[[compiler_gcc16, method_pgolto, level_Ofast, target_native], -1864099, -1218584, -1494536, -10096, -377960, -20756830],
+[[compiler_gcc15, method_lto, level_O2, target_generic], -2297244, -1222480, -1494568, -10176, -294862, -24517994],
+[[compiler_gcc15, method_lto, level_O3, target_native], -3244589, -1237024, -1494536, -10208, -295286, -27887916],
+[[compiler_gcc15, method_lto, level_O3, target_x86_64_v3], -3200366, -1236992, -1494536, -10208, -298374, -27888511],
+[[compiler_gcc15, method_lto, level_Ofast, target_native], -3235245, -1236832, -1494536, -10208, -294748, -27867139],
+[[compiler_gcc15, method_pgolto, level_O2, target_generic], -1542787, -1219120, -1494504, -10096, -352321, -18733412],
+[[compiler_gcc15, method_pgolto, level_Ofast, target_native], -1707123, -1219408, -1494536, -10096, -342032, -20139991],
+[[compiler_icx, method_std, level_Ofast, target_native], -2944169, -2946048, -1470360, -26544, -463482, -20497312],
+[[compiler_icx, method_lto, level_Ofast, target_native], -3061529, -1691584, -1421704, -13920, -332278, -23688674],
+[[compiler_icx, method_pgolto, level_Ofast, target_native], -2484697, -1671296, -1421704, -13920, -400118, -20408518],
+[[compiler_llvm, method_std, level_Ofast, target_native], -2712595, -1917699, -1468268, -22608, -1890910, -16121082],
+[[compiler_llvm, method_lto, level_O2, target_generic], -2471847, -709968, -1419260, -9936, -1672504, -15716584],
+[[compiler_llvm, method_lto, level_O3, target_native], -2729779, -715085, -1419260, -9936, -1683515, -15804032],
+[[compiler_llvm, method_lto, level_O3, target_x86_64_v3], -2661796, -714413, -1419260, -9936, -1683395, -15569018],
+[[compiler_llvm, method_lto, level_Ofast, target_native], -2723827, -715037, -1419260, -9936, -1683372, -15794003],
+[[compiler_llvm, method_pgolto, level_O2, target_generic], -2047525, -701821, -1419260, -9952, -1755944, -14181892],
+[[compiler_llvm, method_pgolto, level_Ofast, target_native], -2089935, -704352, -1419260, -9952, -1755744, -13951343],
+[[compiler_llvm, method_thinlto, level_Ofast, target_native], -2823699, -718355, -1420344, -10016, -1718656, -44066230],
+[[compiler_llvm, method_pgothinlto, level_Ofast, target_native], -2027471, -705591, -1420364, -9968, -1778428, -21647042]];
+  for (i = 0; i < 37; i++)
+  {
+    var include = true;
+    for (j = 0; j < 4; j++)
+      if (!all[i][0][j].checked)
+      {
+        include = false;
+        break;
+      }
+    if (!include)
+      continue;
+    gen_l2.push(" ");
+    gen_text.push(allsz[i][1]);
+    gen_rodata.push(allsz[i][2]);
+    gen_data.push(allsz[i][3]);
+    gen_bss.push(allsz[i][4]);
+    gen_others.push(allsz[i][5]);
+    gen_debug.push(allsz[i][6]);
+  }
+
+  szdata = {
+    labels: gen_l2,
+    datasets: [
+      {
+        label: 'text',
+        borderColor: 'rgb(0, 192, 29)',
+        backgroundColor: 'rgba(0, 192, 29, 0.4)',
+        borderWidth: 2,
+        data: gen_text
+      },
+      {
+        label: 'rodata',
+        borderColor: 'rgb(0, 178, 226)',
+        backgroundColor: 'rgba(0, 178, 226, 0.4)',
+        borderWidth: 2,
+        data: gen_rodata
+      },
+      {
+        label: 'data',
+        borderColor: 'rgb(0, 7, 176)',
+        backgroundColor: 'rgba(0, 7, 176, 0.4)',
+        borderWidth: 2,
+        data: gen_data
+      },
+      {
+        label: 'bss',
+        borderColor: 'rgb(132, 23, 129)',
+        backgroundColor: 'rgba(132, 23, 129, 0.4)',
+        borderWidth: 2,
+        data: gen_bss
+      },
+      {
+        label: 'other non-debug',
+        borderColor: 'rgb(100, 100, 100)',
+        backgroundColor: 'rgba(100, 100, 100, 0.4)',
+        borderWidth: 2,
+        data: gen_others
+      }
+     ]
+   };
+   if (show_debugsize.checked)
+      szdata.datasets.push(
+      {
+        label: 'debug sections',
+        borderColor: 'rgb(253, 154, 43)',
+        backgroundColor: 'rgba(253, 154, 43, 0.4)',
+        borderWidth: 2,
+        data: gen_debug
+      })
+
+  chart_size2.canvas.parentNode.style.height = h.toString() + 'em';
+
+  chart_size2.data = szdata;
+  chart_size2.resize();
+  chart_size2.update();
+
+}
+
+function regenerate_all()
+{
+  regenerate_1();
+  regenerate_2();
+  var linkParams = new URLSearchParams("")
+  var p = "";
+  p = "";
+  p = p.concat(compiler_trunk.checked ? "1" : "0");
+  p = p.concat(compiler_gcc16.checked ? "1" : "0");
+  p = p.concat(compiler_gcc15.checked ? "1" : "0");
+  p = p.concat(compiler_gcc14.checked ? "1" : "0");
+  p = p.concat(compiler_gcc13.checked ? "1" : "0");
+  p = p.concat(compiler_icx.checked ? "1" : "0");
+  p = p.concat(compiler_llvm.checked ? "1" : "0");
+  p = p.concat(compiler_aocc.checked ? "1" : "0");
+  linkParams.append("c", p);
+  p = "";
+  p = p.concat(method_std.checked ? "1" : "0");
+  p = p.concat(method_pgo.checked ? "1" : "0");
+  p = p.concat(method_lto.checked ? "1" : "0");
+  p = p.concat(method_pgolto.checked ? "1" : "0");
+  p = p.concat(method_thinlto.checked ? "1" : "0");
+  p = p.concat(method_pgothinlto.checked ? "1" : "0");
+  linkParams.append("m", p);
+  p = "";
+  p = p.concat(level_O2.checked ? "1" : "0");
+  p = p.concat(level_O3.checked ? "1" : "0");
+  p = p.concat(level_Ofast.checked ? "1" : "0");
+  linkParams.append("l", p);
+  p = "";
+  p = p.concat(target_generic.checked ? "1" : "0");
+  p = p.concat(target_native.checked ? "1" : "0");
+  p = p.concat(target_native_vec128.checked ? "1" : "0");
+  p = p.concat(target_native_vec256.checked ? "1" : "0");
+  p = p.concat(target_x86_64_v3.checked ? "1" : "0");
+  p = p.concat(target_znver3.checked ? "1" : "0");
+  p = p.concat(target_znver4.checked ? "1" : "0");
+  linkParams.append("t", p);
+  if (show_debugsize.checked)
+    linkParams.append("dsz", "1");
+  document.getElementById("link_to_self").href = "714.cpython_r.html?" + linkParams.toString();
+  document.getElementById("link_to_self").innerHTML = "(link to this selection)";
+
+}
+
+function select_all()
+{
+  compiler_trunk.checked = true;
+  compiler_gcc16.checked = true;
+  compiler_gcc15.checked = true;
+  compiler_gcc14.checked = true;
+  compiler_gcc13.checked = true;
+  compiler_icx.checked = true;
+  compiler_llvm.checked = true;
+  compiler_aocc.checked = true;
+  method_std.checked = true;
+  method_pgo.checked = true;
+  method_lto.checked = true;
+  method_pgolto.checked = true;
+  method_thinlto.checked = true;
+  method_pgothinlto.checked = true;
+  level_O2.checked = true;
+  level_O3.checked = true;
+  level_Ofast.checked = true;
+  target_generic.checked = true;
+  target_native.checked = true;
+  target_native_vec128.checked = true;
+  target_native_vec256.checked = true;
+  target_x86_64_v3.checked = true;
+  target_znver3.checked = true;
+  target_znver4.checked = true;
+
+  regenerate_all();
+}
+
+function select_none()
+{
+  compiler_trunk.checked = false;
+  compiler_gcc16.checked = false;
+  compiler_gcc15.checked = false;
+  compiler_gcc14.checked = false;
+  compiler_gcc13.checked = false;
+  compiler_icx.checked = false;
+  compiler_llvm.checked = false;
+  compiler_aocc.checked = false;
+  method_std.checked = false;
+  method_pgo.checked = false;
+  method_lto.checked = false;
+  method_pgolto.checked = false;
+  method_thinlto.checked = false;
+  method_pgothinlto.checked = false;
+  level_O2.checked = false;
+  level_O3.checked = false;
+  level_Ofast.checked = false;
+  target_generic.checked = false;
+  target_native.checked = false;
+  target_native_vec128.checked = false;
+  target_native_vec256.checked = false;
+  target_x86_64_v3.checked = false;
+  target_znver3.checked = false;
+  target_znver4.checked = false;
+
+  regenerate_all();
+}
+
+function select_ltoo2gen()
+{
+  compiler_trunk.checked = true;
+  compiler_gcc16.checked = true;
+  compiler_gcc15.checked = true;
+  compiler_gcc14.checked = true;
+  compiler_gcc13.checked = true;
+  compiler_icx.checked = true;
+  compiler_llvm.checked = true;
+  compiler_aocc.checked = true;
+  method_std.checked = false;
+  method_pgo.checked = false;
+  method_lto.checked = false;
+  method_pgolto.checked = false;
+  method_thinlto.checked = false;
+  method_pgothinlto.checked = false;
+  level_O2.checked = false;
+  level_O3.checked = false;
+  level_Ofast.checked = false;
+  target_generic.checked = false;
+  target_native.checked = false;
+  target_native_vec128.checked = false;
+  target_native_vec256.checked = false;
+  target_x86_64_v3.checked = false;
+  target_znver3.checked = false;
+  target_znver4.checked = false;
+
+  method_lto.checked = true;
+  level_O2.checked = true;
+  target_generic.checked = true;
+  regenerate_all();
+}
+
+function select_ltoofastnat()
+{
+  compiler_trunk.checked = true;
+  compiler_gcc16.checked = true;
+  compiler_gcc15.checked = true;
+  compiler_gcc14.checked = true;
+  compiler_gcc13.checked = true;
+  compiler_icx.checked = true;
+  compiler_llvm.checked = true;
+  compiler_aocc.checked = true;
+  method_std.checked = false;
+  method_pgo.checked = false;
+  method_lto.checked = false;
+  method_pgolto.checked = false;
+  method_thinlto.checked = false;
+  method_pgothinlto.checked = false;
+  level_O2.checked = false;
+  level_O3.checked = false;
+  level_Ofast.checked = false;
+  target_generic.checked = false;
+  target_native.checked = false;
+  target_native_vec128.checked = false;
+  target_native_vec256.checked = false;
+  target_x86_64_v3.checked = false;
+  target_znver3.checked = false;
+  target_znver4.checked = false;
+
+  method_lto.checked = true;
+  level_Ofast.checked = true;
+  target_native.checked = true;
+  regenerate_all();
+}
+
+compiler_trunk.addEventListener('click', regenerate_all);
+compiler_gcc16.addEventListener('click', regenerate_all);
+compiler_gcc15.addEventListener('click', regenerate_all);
+compiler_gcc14.addEventListener('click', regenerate_all);
+compiler_gcc13.addEventListener('click', regenerate_all);
+compiler_icx.addEventListener('click', regenerate_all);
+compiler_llvm.addEventListener('click', regenerate_all);
+compiler_aocc.addEventListener('click', regenerate_all);
+method_std.addEventListener('click', regenerate_all);
+method_pgo.addEventListener('click', regenerate_all);
+method_lto.addEventListener('click', regenerate_all);
+method_pgolto.addEventListener('click', regenerate_all);
+method_thinlto.addEventListener('click', regenerate_all);
+method_pgothinlto.addEventListener('click', regenerate_all);
+level_O2.addEventListener('click', regenerate_all);
+level_Ofast.addEventListener('click', regenerate_all);
+level_O3.addEventListener('click', regenerate_all);
+target_native.addEventListener('click', regenerate_all);
+target_znver4.addEventListener('click', regenerate_all);
+target_native_vec128.addEventListener('click', regenerate_all);
+target_znver3.addEventListener('click', regenerate_all);
+target_native_vec256.addEventListener('click', regenerate_all);
+target_generic.addEventListener('click', regenerate_all);
+target_x86_64_v3.addEventListener('click', regenerate_all);
+show_debugsize.addEventListener('click', regenerate_all);
+selall_button.addEventListener('click', select_all);
+selnone_button.addEventListener('click', select_none);
+selo2lto_button.addEventListener('click', select_ltoo2gen);
+selofastlto_button.addEventListener('click', select_ltoofastnat);
+
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if (urlParams.has("c"))
+{
+     var p = String(urlParams.get("c"));
+     if (p.length >= 8) {
+         if (p.length < 1 || p[0] == "0")
+             compiler_trunk.checked = false;
+         else
+             compiler_trunk.checked = true;
+         if (p.length < 2 || p[1] == "0")
+             compiler_gcc16.checked = false;
+         else
+             compiler_gcc16.checked = true;
+         if (p.length < 3 || p[2] == "0")
+             compiler_gcc15.checked = false;
+         else
+             compiler_gcc15.checked = true;
+         if (p.length < 4 || p[3] == "0")
+             compiler_gcc14.checked = false;
+         else
+             compiler_gcc14.checked = true;
+         if (p.length < 5 || p[4] == "0")
+             compiler_gcc13.checked = false;
+         else
+             compiler_gcc13.checked = true;
+         if (p.length < 6 || p[5] == "0")
+             compiler_icx.checked = false;
+         else
+             compiler_icx.checked = true;
+         if (p.length < 7 || p[6] == "0")
+             compiler_llvm.checked = false;
+         else
+             compiler_llvm.checked = true;
+         if (p.length < 8 || p[7] == "0")
+             compiler_aocc.checked = false;
+         else
+             compiler_aocc.checked = true;
+    }
+}
+if (urlParams.has("m"))
+{
+     var p = String(urlParams.get("m"));
+     if (p.length >= 6) {
+         if (p.length < 1 || p[0] == "0")
+             method_std.checked = false;
+         else
+             method_std.checked = true;
+         if (p.length < 2 || p[1] == "0")
+             method_pgo.checked = false;
+         else
+             method_pgo.checked = true;
+         if (p.length < 3 || p[2] == "0")
+             method_lto.checked = false;
+         else
+             method_lto.checked = true;
+         if (p.length < 4 || p[3] == "0")
+             method_pgolto.checked = false;
+         else
+             method_pgolto.checked = true;
+         if (p.length < 5 || p[4] == "0")
+             method_thinlto.checked = false;
+         else
+             method_thinlto.checked = true;
+         if (p.length < 6 || p[5] == "0")
+             method_pgothinlto.checked = false;
+         else
+             method_pgothinlto.checked = true;
+    }
+}
+if (urlParams.has("l"))
+{
+     var p = String(urlParams.get("l"));
+     if (p.length >= 3) {
+         if (p.length < 1 || p[0] == "0")
+             level_O2.checked = false;
+         else
+             level_O2.checked = true;
+         if (p.length < 2 || p[1] == "0")
+             level_O3.checked = false;
+         else
+             level_O3.checked = true;
+         if (p.length < 3 || p[2] == "0")
+             level_Ofast.checked = false;
+         else
+             level_Ofast.checked = true;
+    }
+}
+if (urlParams.has("t"))
+{
+     var p = String(urlParams.get("t"));
+     if (p.length >= 7) {
+         if (p.length < 1 || p[0] == "0")
+             target_generic.checked = false;
+         else
+             target_generic.checked = true;
+         if (p.length < 2 || p[1] == "0")
+             target_native.checked = false;
+         else
+             target_native.checked = true;
+         if (p.length < 3 || p[2] == "0")
+             target_native_vec128.checked = false;
+         else
+             target_native_vec128.checked = true;
+         if (p.length < 4 || p[3] == "0")
+             target_native_vec256.checked = false;
+         else
+             target_native_vec256.checked = true;
+         if (p.length < 5 || p[4] == "0")
+             target_x86_64_v3.checked = false;
+         else
+             target_x86_64_v3.checked = true;
+         if (p.length < 6 || p[5] == "0")
+             target_znver3.checked = false;
+         else
+             target_znver3.checked = true;
+         if (p.length < 7 || p[6] == "0")
+             target_znver4.checked = false;
+         else
+             target_znver4.checked = true;
+    }
+}
+if (urlParams.has("dsz"))
+    show_debugsize.checked = (urlParams.get("dsz") == "1");
+
+regenerate_all();
+
+</script>
+
+
+<a name="gcccmp"></a>
+<h2>Regressions</h2>
+<div>
+  <table class="benchcompare">
+    <tr>
+      <th>Time</th>
+      <th>What</th>
+      <th>Against</th>
+      <th>Machine</th>
+    </tr>
+    <tr><td style="color:darkred;"><strong>6.08%</strong></td>
+      <td>trunk lto O3 x86_64_v3</td>
+      <td>trunk lto O3 generic</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=010&t=1000100#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-17-25c2d765.html#b2">Table<a/></td>
+</tr>
+    <tr><td style="color:darkred;"><strong>5.15%</strong></td>
+      <td>trunk lto O3 native</td>
+      <td>trunk lto O3 generic</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=010&t=1100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-17-25c2d765.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>4.30%</strong></td>
+      <td>trunk lto O3 native</td>
+      <td>trunk lto O3 generic</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=010&t=1100000#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-17-25c2d765.html#b2">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>3.92%</strong></td>
+      <td>trunk lto O3 x86_64_v3</td>
+      <td>trunk lto O3 generic</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=010&t=1000100#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-17-25c2d765.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>3.10%</strong></td>
+      <td>trunk lto O2 x86_64_v3</td>
+      <td>trunk lto O2 generic</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=100&t=1000100#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-16-fe81dcde.html#b2">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>2.45%</strong></td>
+      <td>trunk std Ofast native</td>
+      <td>trunk std Ofast generic</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=100000&l=001&t=1100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-15-64672bf5.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>2.36%</strong></td>
+      <td>trunk lto Ofast x86_64_v3</td>
+      <td>gcc16 lto Ofast x86_64_v3</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=11000000&m=001000&l=001&t=0000100#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-04-68966aff.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>2.36%</strong></td>
+      <td>trunk lto Ofast x86_64_v3</td>
+      <td>trunk lto O3 x86_64_v3</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=011&t=0000100#b1">Chart<a/>
+</td>
+</td>
+</tr>
+    <tr><td style="color:black;"><strong>2.33%</strong></td>
+      <td>trunk lto O2 x86_64_v3</td>
+      <td>trunk lto O2 generic</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000000&m=001000&l=100&t=1000100#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-16-fe81dcde.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>3.33%</strong></td>
+      <td>trunk pgolto Ofast native</td>
+      <td>gcc16 pgolto Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=11000000&m=000100&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-13-cff1b6d4.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:black;"><strong>2.17%</strong></td>
+      <td>trunk pgolto Ofast native</td>
+      <td>gcc16 pgolto Ofast native</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=11000000&m=000100&l=001&t=0100000#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-13-cff1b6d4.html#b2">Table<a/></td>
+</tr>
+  </table>
+    <div class="legend">Regressions smaller than 2% are not shown.</div>
+</div>
+
+<a name="othercmp"></a>
+<h2>Wins</h2>
+<div>
+  <table class="benchcompare">
+    <tr>
+      <th>Time</th>
+      <th>What</th>
+      <th>Against</th>
+      <th>Machine</th>
+    </tr>
+    <tr><td style="color:darkgreen;"><strong>10.24%</strong></td>
+      <td>trunk lto Ofast native</td>
+      <td>llvm lto Ofast native</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001000&l=001&t=0100000#b2">Chart<a/>
+</td>
+</td>
+<td>Tables: <a href="spec2026int-35-89b737a3.html#b2">1<a/>, <a href="spec2026int-40-a91cb461.html#b2">2<a/>, <a href="spec2026int-47-404511e2.html#b2">3<a/>, <a href="spec2026int-55-88d9ba2d.html#b2">4<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>9.31%</strong></td>
+      <td>trunk lto O3 x86_64_v3</td>
+      <td>llvm lto O3 x86_64_v3</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001000&l=010&t=0000100#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-33-17bbf7a0.html#b2">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>8.24%</strong></td>
+      <td>trunk lto O3 native</td>
+      <td>llvm lto O3 native</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001000&l=010&t=0100000#b2">Chart<a/>
+</td>
+</td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>8.11%</strong></td>
+      <td>trunk lto O3 generic</td>
+      <td>llvm lto O3 generic</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001000&l=010&t=1000000#b1">Chart<a/>
+</td>
+</td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>7.27%</strong></td>
+      <td>trunk std Ofast native</td>
+      <td>llvm std Ofast native</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=100000&l=001&t=0100000#b2">Chart<a/>
+</td>
+</td>
+<td>Tables: <a href="spec2026int-30-b523d331.html#b2">1<a/>, <a href="spec2026int-43-6f8d5cc6.html#b2">2<a/>, <a href="spec2026int-51-c7757f81.html#b2">3<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>7.27%</strong></td>
+      <td>trunk std Ofast native</td>
+      <td>icx std Ofast native</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000100&m=100000&l=001&t=0100000#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-51-c7757f81.html#b2">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>7.26%</strong></td>
+      <td>trunk std Ofast native</td>
+      <td>llvm std Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=100000&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td>Tables: <a href="spec2026int-30-b523d331.html#b1">1<a/>, <a href="spec2026int-43-6f8d5cc6.html#b1">2<a/>, <a href="spec2026int-51-c7757f81.html#b1">3<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>7.26%</strong></td>
+      <td>trunk std Ofast native</td>
+      <td>aocc std Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000001&m=100000&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-43-6f8d5cc6.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>6.79%</strong></td>
+      <td>trunk lto Ofast native</td>
+      <td>llvm thinlto Ofast native</td>
+      <td>AMD EPYC 75F3 (zen3 based high-frequency Milan)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001010&l=001&t=0100000#b2">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-40-a91cb461.html#b2">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>6.31%</strong></td>
+      <td>trunk std Ofast native</td>
+      <td>icx std Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000100&m=100000&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-51-c7757f81.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>5.71%</strong></td>
+      <td>trunk lto Ofast native</td>
+      <td>llvm lto Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001000&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td>Tables: <a href="spec2026int-35-89b737a3.html#b1">1<a/>, <a href="spec2026int-40-a91cb461.html#b1">2<a/>, <a href="spec2026int-47-404511e2.html#b1">3<a/>, <a href="spec2026int-55-88d9ba2d.html#b1">4<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>5.71%</strong></td>
+      <td>trunk lto Ofast native</td>
+      <td>llvm thinlto Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=001010&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-40-a91cb461.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>10.73%</strong></td>
+      <td>trunk pgolto Ofast native</td>
+      <td>aocc pgolto Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000001&m=000100&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td>Tables: <a href="spec2026int-39-2c605701.html#b1">1<a/>, <a href="spec2026int-49-2c605701.html#b1">2<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>7.69%</strong></td>
+      <td>trunk pgo Ofast native</td>
+      <td>llvm pgo Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=010000&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-37-1ee49f48.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>7.08%</strong></td>
+      <td>trunk pgolto Ofast native</td>
+      <td>icx pgolto Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000100&m=000100&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td><a href="spec2026int-57-e0d0ca9c.html#b1">Table<a/></td>
+</tr>
+    <tr><td style="color:darkgreen;"><strong>5.54%</strong></td>
+      <td>trunk pgolto Ofast native</td>
+      <td>llvm pgolto Ofast native</td>
+      <td class="important">AMD EPYC 8635P (zen5 based Sorano)</td>
+<td>
+  <a href="714.cpython_r.html?c=10000010&m=000100&l=001&t=0100000#b1">Chart<a/>
+</td>
+</td>
+<td>Tables: <a href="spec2026int-39-2c605701.html#b1">1<a/>, <a href="spec2026int-41-1bd220df.html#b1">2<a/>, <a href="spec2026int-49-2c605701.html#b1">3<a/>, <a href="spec2026int-57-e0d0ca9c.html#b1">4<a/></td>
+</tr>
+  </table>
+    <div class="legend">Wins smaller than 5% are not shown.</div>
+    <div class="legend">Please note that the optimization levels -O2 and -O3
+have different meanings for different compilers despite being called the same.</div>
+</div>
+
+</main>
+
+<footer>
+
+  <p>
+
+    <strong>DISCLAIMER:</strong> All the SPEC results are
+    "non-reportable".  The measurements were taken in order to compare
+    different compilers and compiler options, not different hardware, please
+    do not attempt to make any comparisons of the different machines used.
+    Moreover, we have broken various SPEC benchmarking rules, we have even
+    patched some benchmark sources to be able to compile them with
+    <tt>-fstrict-aliasing</tt>, build with <tt>-fno-common</tt>, and
+    so forth.  And the data may be just wrong, the scripts generating
+    all the fancy graphs and tables have been known to contain bugs in
+    the past.  On the other hand, this is the data that we use to
+    evaluate where GCC stands and we believe that overall this
+    comparison of compilers is a useful one.
+
+  </p>
+
+  <div id="last">&nbsp;</div>
+</footer>
+</body>
+</html>

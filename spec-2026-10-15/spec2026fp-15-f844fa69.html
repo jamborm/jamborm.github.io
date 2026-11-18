@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SPEC comparison - SPEC2026 FPrate: Trunk standard -Ofast - generic vs native</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<header>
+  <h1>SPEC CPU result comparison</h1>
+  <span id="subtitle">15th October 2026 - Normalized report</span>
+
+</header>
+<main>
+  <h1>SPEC2026 FPrate: Trunk standard -Ofast - generic vs native</h1>
+  <p class="cmptext">-Ofast vs -Ofast -march=native -mtune=native  </p>
+<div class="warning">
+  Please note that event though the header of this comparison
+  says <tt>-Ofast</tt>, benchmark 767.nest_r was additionally compiled
+  with <tt>-fno-finite-math-only</tt>.  Furthermore, benchmarks
+  737.gmsh_r and 748.flightdm_r were compiled
+  with <tt>-fno-fast-math</tt>, so a big chunk of <tt>-Ofast</tt> was
+  in fact disabled.  (This might put GCC at a disadvantage compared to
+  LLVM-based compilers because the latter defaults
+  to <tt>-fno-math-errno</tt> and <tt>-fno-trapping-math</tt>, in
+  future measurements, we will try to enable these flags.)
+</div>
+  <div>
+  <a name="box1"></a>
+  <h2>AMD EPYC 8635P (zen5 based Sorano)</h2>
+  <h3>Run-times</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">Generic</th>
+      <th class="">Native</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="709.cactus_r.html?c=10000000&m=100000&l=001&t=1100000">709.cactus_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 36.57%,rgba(48,186,120, 0.3) 36.57%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">82.81%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="722.palm_r.html?c=10000000&m=100000&l=001&t=1100000">722.palm_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 37.58%,rgba(48,186,120, 0.3) 37.58%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">84.10%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="731.astcenc_r.html?c=10000000&m=100000&l=001&t=1100000">731.astcenc_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 28.83%,rgba(48,186,120, 0.3) 28.83%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">72.90%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="736.ocio_r.html?c=10000000&m=100000&l=001&t=1100000">736.ocio_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 30.68%,rgba(48,186,120, 0.3) 30.68%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">75.27%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="737.gmsh_r.html?c=10000000&m=100000&l=001&t=1100000">737.gmsh_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.89%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="748.flightdm_r.html?c=10000000&m=100000&l=001&t=1100000">748.flightdm_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.00%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="749.fotonik3d_r.html?c=10000000&m=100000&l=001&t=1100000">749.fotonik3d_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 42.02%,rgba(48,186,120, 0.3) 42.02%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">89.79%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="765.roms_r.html?c=10000000&m=100000&l=001&t=1100000">765.roms_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 28.07%,rgba(48,186,120, 0.3) 28.07%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">71.94%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="766.femflow_r.html?c=10000000&m=100000&l=001&t=1100000">766.femflow_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 2.86%,rgba(48,186,120, 0.3) 2.86%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">39.66%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="767.nest_r.html?c=10000000&m=100000&l=001&t=1100000">767.nest_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 47.00%,rgba(48,186,120, 0.3) 47.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">96.16%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="772.marian_r.html?c=10000000&m=100000&l=001&t=1100000">772.marian_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0.00%,rgba(48,186,120, 0.3) 0.00%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">36.00%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="782.lbm_r.html?c=10000000&m=100000&l=001&t=1100000">782.lbm_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">98.11%</td>
+    </tr>
+  </table>
+  </div>
+  <table class="legend">
+  </table>
+  <span class="legend">  The compiler used was GCC 17.0.0 20261015 (experimental) (revision 84348add236100e5f69a3e9ec4f7b1038bf2b83d).<br>
+  Naturally, the smaller the run-times, the better.
+  <br>
+  See also continuous gcc tuning benchmarking at
+    <a href="https://lnt.opensuse.org/db_default/v4/SPEC/spec_report/tuning">
+    https://lnt.opensuse.org/db_default/v4/SPEC/spec_report/tuning</a>.
+  </span>  <div class="aftertable"></div>
+  <h3>Non-debug executable sizes</h2>
+  <div class="normalized">
+  <table class="suitecompare">
+    <tr>
+      <th class="benchmark">Benchmark</th>
+      <th class="relperhdr">Generic</th>
+      <th class="">Native</th>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="709.cactus_r.html?c=10000000&m=100000&l=001&t=1100000">709.cactus_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">99.56%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="722.palm_r.html?c=10000000&m=100000&l=001&t=1100000">722.palm_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 60.11%,rgba(255,255,255,0) 60.11%,rgba(255,255,255,0) 100%);">104.18%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="731.astcenc_r.html?c=10000000&m=100000&l=001&t=1100000">731.astcenc_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 35.29%,rgba(48,186,120, 0.3) 35.29%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">93.91%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="736.ocio_r.html?c=10000000&m=100000&l=001&t=1100000">736.ocio_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 60.86%,rgba(255,255,255,0) 60.86%,rgba(255,255,255,0) 100%);">104.49%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="737.gmsh_r.html?c=10000000&m=100000&l=001&t=1100000">737.gmsh_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 61.81%,rgba(255,255,255,0) 61.81%,rgba(255,255,255,0) 100%);">104.89%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="748.flightdm_r.html?c=10000000&m=100000&l=001&t=1100000">748.flightdm_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">101.23%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="749.fotonik3d_r.html?c=10000000&m=100000&l=001&t=1100000">749.fotonik3d_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 100.00%,rgba(255,255,255,0) 100.00%,rgba(255,255,255,0) 100%);">120.69%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="765.roms_r.html?c=10000000&m=100000&l=001&t=1100000">765.roms_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 60.78%,rgba(255,255,255,0) 60.78%,rgba(255,255,255,0) 100%);">104.46%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="766.femflow_r.html?c=10000000&m=100000&l=001&t=1100000">766.femflow_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent">100.37%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="767.nest_r.html?c=10000000&m=100000&l=001&t=1100000">767.nest_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 57.65%,rgba(255,255,255,0) 57.65%,rgba(255,255,255,0) 100%);">103.17%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="772.marian_r.html?c=10000000&m=100000&l=001&t=1100000">772.marian_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 50%,rgb(220, 53, 69) 50%,rgba(220, 53, 69, 0.3) 58.43%,rgba(255,255,255,0) 58.43%,rgba(255,255,255,0) 100%);">103.49%</td>
+    </tr>
+    <tr class="cmprow">
+      <td class="benchmark"><a href="782.lbm_r.html?c=10000000&m=100000&l=001&t=1100000">782.lbm_r</a></td>
+      <td class="percent">100.00%</td>
+      <td class="percent" style="background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 26.38%,rgba(48,186,120, 0.3) 26.38%,rgb(48,186,120) 50%,rgba(255,255,255,0) 50%,rgba(255,255,255,0) 100%);">90.23%</td>
+    </tr>
+  </table>
+  </div>
+  <span class="legend">Smaller binary sizes are always better.</span>
+  <div class="aftertable"></div>
+  </div>
+
+</main>
+
+<footer>
+
+  <p>
+
+    <strong>DISCLAIMER:</strong> All the SPEC results are
+    "non-reportable".  The measurements were taken in order to compare
+    different compilers and compiler options, not different hardware, please
+    do not attempt to make any comparisons of the different machines used.
+    Moreover, we have broken various SPEC benchmarking rules, we have even
+    patched some benchmark sources to be able to compile them with
+    <tt>-fstrict-aliasing</tt>, build with <tt>-fno-common</tt>, and
+    so forth.  And the data may be just wrong, the scripts generating
+    all the fancy graphs and tables have been known to contain bugs in
+    the past.  On the other hand, this is the data that we use to
+    evaluate where GCC stands and we believe that overall this
+    comparison of compilers is a useful one.
+
+  </p>
+
+  <div id="last">&nbsp;</div>
+</footer>
+</body>
+</html>
